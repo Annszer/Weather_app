@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Hubballi&family=Indie+Flower&display=swap');
+
+.home {
+  height: 600px;
+  width: 800px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border: 2px solid green;
+  border-radius: 35px;
+  margin-top: 50px;
+  background: #e0f8d6;
+  font-family: 'Hubballi', sans-serif;
+  opacity:0.9;
+
+  &_header {
+
+  }
+
+  &_title {
+    text-transform: uppercase;
+    margin: 40px;
+
+  }
+
+  &_form {
+    margin-bottom: 50px;
+    font-size: 2em;
+
+    input {
+      font-size: 20px;
+    }
+  }
+
+  &_btn {
+    font-size: 20px;
+    width: 105px;
+    margin-left: 10px;
+    background: cornflowerblue;
+    border: none;
+    border-radius: 35px;
+    padding: 5px 15px;
+    cursor: pointer;
+  }
+
+  &_icon {
+    width: 100px;
+    height: 100px;
+  }
+
+  &_result {
+    font-size: 2em;
+    width: 600px;
+  }
+}
