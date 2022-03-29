@@ -8,4 +8,6 @@ body {
   // background: #faf3d9;
   background-image: url('/mountain.png');
   background-size: cover;
+  //background-repeat: no-repeat;
+  background-attachment: fixed;
 }

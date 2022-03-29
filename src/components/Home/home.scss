@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Hubballi&family=Indie+Flower&display=swap');
 
 .home {
-  height: 600px;
+  height: 700px;
   width: 800px;
   display: flex;
   align-items: center;
@@ -52,4 +52,12 @@
     font-size: 2em;
     width: 600px;
   }
+}
+.warning {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 48px;
+  height: 100vh;
 }
