@@ -4,12 +4,7 @@ import Home from "./components/Home/Home";
 
 
 function App() {
-  return (
-      <div>
-        <Home/>
-          {/*<div> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, eum.</div>*/}
-      </div>
-  );
+  return <Home/>;
 }
 
 export default App;

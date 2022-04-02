@@ -3,7 +3,7 @@ import "./home.scss";
 
 const Home = () => {
     const [city, setCity] = useState("Londyn");
-    const [date, setDate] = useState(new Date());
+    const [date,] = useState(new Date());
     const [error, setError] = useState(null);
     const [weather, setWeather] = useState({
         description: "",
@@ -22,7 +22,7 @@ const Home = () => {
         fetch(API_TEST_DAY)
             .then((res) => {
                 if (res.ok) return res.json();
-                else throw new Error("Błąd sieci");
+                throw new Error("Błąd sieci");
             })
             .then((res) => {
                 setWeather({
@@ -39,7 +39,6 @@ const Home = () => {
                 setCity("");
             })
             .catch((error) => {
-                console.log("Wpisz poprawne miasto", error);
                 setError("Wpisz poprawne miasto");
             });
     };
@@ -74,12 +73,10 @@ const Home = () => {
         }
     };
 
-    useEffect(() => {
-        fetchFun();
-    }, []);
+    useEffect(fetchFun,[]);
 
     useEffect(() => {
-        const search = document.querySelector(".home_input");
+        const search = document.querySelector(".home_input"); //useRef
         search.focus();
     }, []);
 
@@ -107,7 +104,7 @@ const Home = () => {
                 <div className="home_result">
                     <div className="home_error">{error}</div>
                     <div>
-                        Pogoda dla:{" "}
+                        Pogoda dla:
                         {weather.cityName.charAt(0).toUpperCase() +
                         weather.cityName.slice(1).toLowerCase()}
                     </div>
