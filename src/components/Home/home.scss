@@ -1,17 +1,30 @@
 @import url('https://fonts.googleapis.com/css2?family=Hubballi&family=Indie+Flower&display=swap');
 
-.home {
-  height: 700px;
-  width: 800px;
+@mixin display() {
   display: flex;
   align-items: center;
   flex-direction: column;
+}
+
+@mixin displayMobile() {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+$font-basic: 1.7em;
+$font-mobile: 0.7em;
+
+.home {
+  height: 700px;
+  width: 800px;
   border: 2px solid green;
   border-radius: 35px;
   margin-top: 50px;
   background: #e0f8d6;
   font-family: 'Hubballi', sans-serif;
   opacity: 0.9;
+  @include display();
   @media only screen and (max-width: 800px) {
     height: 100vh;
     width: 100vw;
@@ -19,36 +32,32 @@
     border: none;
     border-radius: 0;
     margin-top: 0;
-
   }
 
-  &_title {
+  &__title {
     text-transform: uppercase;
     margin: 40px;
-
   }
 
-  &_form {
+  &__form {
     margin-bottom: 50px;
-    font-size: 2em;
+    font-size: $font-basic;
     @media only screen and (max-width: 800px) {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+      @include displayMobile();
     }
   }
 
-  &_input {
-    font-size: 20px;
+  &__input {
+    font-size: $font-mobile * 1.2;
     @media only screen and (max-width: 800px) {
-      font-size: 0.7em;
+      font-size: $font-mobile;
       margin-bottom: 10px;
       margin-top: 10px;
     }
   }
 
-  &_btn {
-    font-size: 20px;
+  &__btn {
+    font-size: $font-mobile * 1.2;
     width: 105px;
     margin-left: 10px;
     background: cornflowerblue;
@@ -57,36 +66,31 @@
     padding: 5px 15px;
     cursor: pointer;
     @media only screen and (max-width: 800px) {
-      font-size: 0.7em;
+      font-size: $font-mobile;
       padding: 0 5px;
-
     }
   }
 
-  &_icon {
-    width: 100px;
-    height: 100px;
-
-  }
-
-  &_result {
-    font-size: 2em;
+  &__result {
+    font-size: $font-basic;
     width: 600px;
     @media only screen and (max-width: 800px) {
       width: 400px;
     }
   }
 
-  &_error {
+  &__error {
     color: red;
+  }
+
+  &__img {
+    width: 150px;
+    height: 150px;
+    @media only screen and (max-width: 800px) {
+      width: 100px;
+      height: 100px;
+    }
   }
 }
 
-.warning {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  font-size: 48px;
-  height: 100vh;
-}
+

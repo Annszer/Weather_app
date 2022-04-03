@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import "./home.scss";
 
 const Home = () => {
     const [city, setCity] = useState("Londyn");
-    const [date,] = useState(new Date());
+    const [date] = useState(new Date());
     const [error, setError] = useState(null);
     const [weather, setWeather] = useState({
         description: "",
@@ -22,7 +22,7 @@ const Home = () => {
         fetch(API_TEST_DAY)
             .then((res) => {
                 if (res.ok) return res.json();
-                throw new Error("Błąd sieci");
+                else throw new Error("Błąd sieci");
             })
             .then((res) => {
                 setWeather({
@@ -38,7 +38,7 @@ const Home = () => {
                 });
                 setCity("");
             })
-            .catch((error) => {
+            .catch(() => {
                 setError("Wpisz poprawne miasto");
             });
     };
@@ -55,38 +55,38 @@ const Home = () => {
 
     const image = () => {
         if (weather.id >= 200 && weather.id < 300) {
-            return <img src={require("../../icons/11d.png")} alt="Burza" />;
+            return <img className="home__img" src={require("../../icons/11d.png")} alt="Burza" />;
         } else if (weather.id >= 300 && weather.id < 500) {
-            return <img src={require("../../icons/09d.png")} alt="Mżawka" />;
+            return <img className="home__img" src={require("../../icons/09d.png")} alt="Mżawka" />;
         } else if (weather.id >= 500 && weather.id < 600) {
-            return <img src={require("../../icons/10d.png")} alt="Deszcz" />;
+            return <img className="home__img" src={require("../../icons/10d.png")} alt="Deszcz" />;
         } else if (weather.id >= 600 && weather.id < 700) {
-            return <img src={require("../../icons/13d.png")} alt="Śnieg" />;
+            return <img className="home__img" src={require("../../icons/13d.png")} alt="Śnieg" />;
         } else if (weather.id >= 700 && weather.id < 800) {
-            return <img src={require("../../icons/50d.png")} alt="Mgła" />;
+            return <img className="home__img" src={require("../../icons/50d.png")} alt="Mgła" />;
         } else if (weather.id === 800) {
-            return <img src={require("../../icons/01d.png")} alt="Bezchmurnie" />;
+            return <img className="home__img" src={require("../../icons/01d.png")} alt="Bezchmurnie" />;
         } else if (weather.id > 800 && weather.id < 900) {
-            return <img src={require("../../icons/02d.png")} alt="Zachmurzenie" />;
+            return <img className="home__img" src={require("../../icons/02d.png")} alt="Zachmurzenie" />;
         } else {
-            return <img src={require("../../icons/unknown.png")} alt="Nieznana" />;
+            return <img className="home__img" src={require("../../icons/unknown.png")} alt="Nieznana" />;
         }
     };
+
+    const inputRef = useRef(null)
 
     useEffect(fetchFun,[]);
 
     useEffect(() => {
-        const search = document.querySelector(".home_input"); //useRef
-        search.focus();
+        inputRef.current. focus();
     }, []);
 
     return (
         <div className="home">
-            <p className="home_header"> </p>
-            <h1 className="home_title">
+            <h1 className="home__title">
                 Prognoza pogody w dniu: {date.toLocaleDateString()}
             </h1>
-            <form className="home_form" onSubmit={handleSubmit}>
+            <form className="home__form" onSubmit={handleSubmit}>
                 <label>Podaj miejscowość: </label>
                 <input
                     type="text"
@@ -95,16 +95,17 @@ const Home = () => {
                     value={city}
                     onKeyDown={(e) => e.key === "Enter" && handleSubmit()}
                     onChange={handleChange}
-                    className="home_input"
+                    className="home__input"
+                    ref={inputRef}
                 />
-                <button className="home_btn">Szukaj</button>
+                <button className="home__btn">Szukaj</button>
             </form>
 
             {weather.cityName && (
-                <div className="home_result">
-                    <div className="home_error">{error}</div>
+                <div className="home__result">
+                    <div className="home__error">{error}</div>
                     <div>
-                        Pogoda dla:
+                        Pogoda dla: {" "}
                         {weather.cityName.charAt(0).toUpperCase() +
                         weather.cityName.slice(1).toLowerCase()}
                     </div>
