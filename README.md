@@ -1,3 +1,6 @@
+## Application description
+Weather application. It shows weather for current date.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
